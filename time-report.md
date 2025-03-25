@@ -1,6 +1,6 @@
 # Time Report and notes
 
-# 2025-03-25 -- Start time: 20:
+# 2025-03-25 -- Start time: 20:25
 Now playing: Janis Joplin's Greatest Hits, 1973 press.
 Plan: To write the first lines of code -- I'll end when I feel like it.
 
