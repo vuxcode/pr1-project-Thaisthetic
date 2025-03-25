@@ -1,1 +1,41 @@
-<!-- Start writing your project code in this file! -->
+<!--  Creates box telling you to name your character on screen, using HTML -->
+<input id=charName type="text" placeholder="Name your character:" onkeydown="confirmEnter(event)">
+<!-- Creates a button to submit your username. It activates a function to set your name and -->
+<!-- prints it on screen. -->
+<button id="nameButton" onclick= nameSet(event);>Continue</button>
+<!-- Button that lets you sell rock-->
+<button id="sellButton" onclick= sellButton();>Sell rock for <br> $1</button>
+
+<!-- Something that let's me print using document.ElementById since document.write breaks the program-->
+<div id="playerName"></div>
+<div id="playerCash"></div>
+
+<script>
+    // All global variables
+    var username; //Stores username
+    var money = 0; // Stores currency
+
+// If enter is pressed during the character name entry this triggers nameSet
+// making it work the same way as the "continue" or nameButton.
+function confirmEnter(event){ 
+    if (event.key === "Enter"){
+        nameSet();
+    }
+}
+
+//function triggered by pressing continue/nameButton
+function nameSet() {
+
+    username = charName.value; // Takes the input from "charName" and saves it in the variable called username
+    charName.style.display = 'none'; // Hides the input box after nameButton is pressed
+    nameButton.style.display = 'none'; // Hides nameButton when it's pressed
+    document.getElementById("playerName").innerHTML = 'Player name: ' + username + '<br>'; // Writes Player name: + input.
+    gameStart(); // Starts the game.
+}
+
+//function that makes the sell button work
+function sellButton() {
+        money += 1; //
+        document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
+    }
+</script>
