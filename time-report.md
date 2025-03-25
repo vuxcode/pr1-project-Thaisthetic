@@ -1,8 +1,5 @@
 # Time Report
 
-> Write about what you have done and how long you have worked on each part of the project.
-
-For example: 
-
-- 2022-10-24 18:00 Worked for 1 hour.
-  - *List the things you have done.*
+2025-03-25 -- Start time: 20:25
+Plan: To write the first lines of code -- I'll end when I feel like it.
+Record playing: Janis Joplins Greatest Hits, 1973 press.
