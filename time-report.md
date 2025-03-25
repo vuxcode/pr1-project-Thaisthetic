@@ -2,7 +2,10 @@
 
 # 2025-03-25 -- Start time: 20:25
 Now playing: Janis Joplin's Greatest Hits, 1973 press.
-<br> - Plan To write the first lines of code -- I'll end when I feel like it. </br>
+
+-Plan 
+
+To write the first lines of code -- I'll end when I feel like it.
 
 - Current progress
 
