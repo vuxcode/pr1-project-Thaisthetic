@@ -1,8 +1,8 @@
 # Time Report and notes
 
-# 2025-03-25 -- Start time: 20:25
+# 2025-03-25 -- Start time: 20:
+Now playing: Janis Joplin's Greatest Hits, 1973 press.
 Plan: To write the first lines of code -- I'll end when I feel like it.
-<br>Record playing on start: Janis Joplin's Greatest Hits, 1973 press.</br>
 
 Made an input box using HTML for user to enter their username. Next to it is a box that submits the username and saves it to a variable. I also made it so that you can confirm the input using the enter key. Reason behind that being that I instinctively went for enter several times while testing the code, rather than clicking the button itself.
 
@@ -23,6 +23,6 @@ Nothing major, but the sell button shows up too early. I want to make it so that
 
 Other than that the goal is to just keep moving based on the plan.
 
-<br>Record playing as I finish writing: Pugh och Rainrock, Ola Magnell, Lucas Persson: Ett steg till, double-LP, 1975 press.</br>
+Now playing: Pugh och Rainrock, Ola Magnell, Lucas Persson: Ett steg till, double-LP, 1975 press.</br>
 
 # 2025-03-25 -- End time 22:30 -- Total time spent: 2h 5 minutes
