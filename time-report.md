@@ -9,7 +9,7 @@ To write the first lines of code -- I'll end when I feel like it.
 
 - Current progress
 
-Made an input box using HTML for user to enter their username. Next to it is a box that submits the username and saves it to a variable. I also made it so that you can confirm the input using the enter key. Reason behind that being that I instinctively went for enter several times while testing the code, rather than clicking the button itself.
+Made an input box using HTML for user to enter their username. Next to it is a button that submits the username and saves it to a variable. I also made it so that you can confirm the input using the enter key. Reason behind that being that I instinctively went for enter, to submit, several times while testing the code, rather than clicking the button itself.
 
 When you continue the username is printed using the following format "Player name: "username"".
 
@@ -24,7 +24,7 @@ In any case, that works now and I'm fine with that. Other than that I had no maj
 
 - Errors that came up this session to fix during the next
 
-Nothing major, but the sell button shows up too early. I want to make it so that it doesn't show up until you have submitted your username. I'd also like to make it so that you can't continute without entering a username.
+Nothing major, but the sell button shows up too early. I want to make it so that it doesn't show up until you have submitted your username. I'd also like to make it so that you can't continue without entering a username.
 
 Other than that the goal is to just keep moving based on the plan.
 
