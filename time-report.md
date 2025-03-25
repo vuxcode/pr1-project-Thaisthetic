@@ -4,6 +4,8 @@
 Now playing: Janis Joplin's Greatest Hits, 1973 press.
 Plan: To write the first lines of code -- I'll end when I feel like it.
 
+- Current progress
+
 Made an input box using HTML for user to enter their username. Next to it is a box that submits the username and saves it to a variable. I also made it so that you can confirm the input using the enter key. Reason behind that being that I instinctively went for enter several times while testing the code, rather than clicking the button itself.
 
 When you continue the username is printed using the following format "Player name: "username"".
