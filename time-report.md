@@ -25,5 +25,5 @@ Nothing major, but the sell button shows up too early. I want to make it so that
 
 Other than that the goal is to just keep moving based on the plan.
 
-<br>Record playing as I finish writing this: Pugh och Rainrock, Ola Magnell, Lucas Persson: Ett steg till, double-LP, 1975 press.</br>
+<br>Record playing as I finish writing: Pugh och Rainrock, Ola Magnell, Lucas Persson: Ett steg till, double-LP, 1975 press.</br>
 
