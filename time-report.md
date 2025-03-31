@@ -30,4 +30,13 @@ Other than that the goal is to just keep moving based on the plan.
 
 Now playing: Pugh och Rainrock, Ola Magnell, Lucas Persson: Ett steg till, double-LP, 1975 press.</br>
 
-# 2025-03-25 -- End time 22:30 -- Total time spent: 2h 5 minutes
+2025-03-25 -- End time 22:30 -- Total time spent: 2h 5 minutes
+
+# 2025-03-31 -- Start time: 18:45
+
+Now playing: Björn Afzélius & Globetrotters: Nio liv, 1985 press. </br>
+
+- Plan
+
+Fix at least one of the problems that came up during last session. Begin working on the stage module. I want to make two buttons that show up when you have $10. When you choose either one they should trigger two separate bits of text to show up, dependant on which one you press. Each text box should have another button that puts you into the next stage.
+
