@@ -51,7 +51,7 @@ I did fix the sell button showing up too early. And I have added the following:
 
 - Problems during this session.
 
-The majr one... this is the second time I write this time-report. I forgot to save it before and quit Chrome without saving. In the code I had some minor road blocks around the way. The one I got stuck on the longest was that between the transitions I kept having the wrong amount of money at the start of Stage 1, and even as soon as I started the game. I fixed this by updating the function that prints the wealth on screen to trigger more often. Other than that nothing huge.
+The major one... this is the second time I write this time-report. I forgot to save it before and quit Chrome without saving. In the code I had some minor road blocks around the way. The one I got stuck on the longest was that between the transitions I kept having the wrong amount of money at the start of Stage 1, and even as soon as I started the game. I fixed this by updating the function that prints the wealth on screen to trigger more often. Other than that nothing huge.
 
 - Errors that came up during this session to fix during the next.
 
