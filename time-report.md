@@ -40,3 +40,24 @@ Now playing: Björn Afzélius & Globetrotters: Nio liv, 1985 press. </br>
 
 Fix at least one of the problems that came up during last session. Begin working on the stage module. I want to make two buttons that show up when you have $10. When you choose either one they should trigger two separate bits of text to show up, dependant on which one you press. Each text box should have another button that puts you into the next stage.
 
+- Current progress
+
+I did fix the sell button showing up too early. And I have added the following:
+
+++ Two buttons that lets you progress to stage 1 when you reach $10 wealth on stage 0
+++ A transition screen between stage 0 and stage 1. It keeps a placeholder text and a confirm button to get you to the next level
+++ Upon clicking the confirm button you are sent to the next stage. There the value of a click goes from $1 to $10
+++ Passive income of $2/second on stage 1
+
+- Problems during this session.
+
+The majr one... this is the second time I write this time-report. I forgot to save it before and quit Chrome without saving. In the code I had some minor road blocks around the way. The one I got stuck on the longest was that between the transitions I kept having the wrong amount of money at the start of Stage 1, and even as soon as I started the game. I fixed this by updating the function that prints the wealth on screen to trigger more often. Other than that nothing huge.
+
+- Errors that came up during this session to fix during the next.
+
+Apart from the functionality I wanted from the last session that I didn't do anything about, there are no bugs as of now. Meaning that the next session I will just keep pushing through.
+
+2025-03-31 -- End time 23:25 -- Total time spent: 4h 39 min
+
+
+
