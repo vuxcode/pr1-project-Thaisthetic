@@ -1,19 +1,86 @@
+<!-- Start writing your project code in this file! -->
+
 <!--  Creates box telling you to name your character on screen, using HTML -->
 <input id=charName type="text" placeholder="Name your character:" onkeydown="confirmEnter(event)">
 <!-- Creates a button to submit your username. It activates a function to set your name and -->
 <!-- prints it on screen. -->
 <button id="nameButton" onclick= nameSet(event);>Continue</button>
-<!-- Button that lets you sell rock-->
-<button id="sellButton" onclick= sellButton();>Sell rock for <br> $1</button>
+<!-- Button that lets you sell rock, style function hides the button. -->
+<button id="sellButton" onclick="sellBackEnd()" style="display: none;"></button>
+<!-- Button that asks if you want to go to the next stage, legal route -->
+<button id="legalButton"; onclick="legal()" style="display: none;"; ></button>
+<!-- Button that asks if you want to go to the next stage, illegal route -->
+<button id="illegalButton"; onclick="illegal()" style="display: none;"; ></button>
+<!-- Button to confirm stage choice -->
+<button id="confirmButton"; onclick="confirmNextStage()" style="display: none;"; ></button>
 
-<!-- Something that let's me print using document.ElementById since document.write breaks the program-->
+<!-- Something that let's me print using innerHTML since document.write breaks the program-->
 <div id="playerName"></div>
 <div id="playerCash"></div>
+<div id="sellButton"></div>
+<div id="stageOneLegalText"></div>
+<div id="stageOneIllegalText"></div>
+<div id="currentPassive"></div>
 
 <script>
     // All global variables
     var username; //Stores username
+    var sellValue = 0; //Makes the sellButton dynamic by letting each stage modify the value of it
     var money = 0; // Stores currency
+    var sellButtonText; // Because each stage and outcome warrants a different text on the button I made it depend on a variable.
+    var legalButtonText = "Continue to the next stage: Legal route"; // Decides the text during the legal transfer screen. Static right now, but might need to be variable later.
+    var illegalButtonText = "Continue to the next stage: Illegal route"; // Decides the text during the illegal transfer screen. Static right now, but might need to be variable later.
+    var levelMax; // Stores the value for how much money you need to progress to the next stage
+    var confirmButtonText = "Confirm"; // Button to confirm your stage outcome choice
+    var legalVar; // Stores whether you chose the legal or illegal option
+    var illegalVar; // Stores whether you chose the legal or illegal option
+    var passiveValue; // This is the value of your passive income
+    var playerCashVar = 'Total wealth: ' + '$'; // Wealth counter. Made into a variable to implement easier.
+
+// function that sets variables for both stage one outcomes
+function stageOneVars(){
+    money -= 10;
+    sellValue = 10;
+    passiveValue = 2;
+    levelMax = 100;
+}
+
+//function that hides or shows buttons and text during the transition screen
+function stageTextHideShowButtons(){
+    document.getElementById("sellButton").style.display = "none";
+    document.getElementById("playerCash").style.display = "none";
+    document.getElementById("legalButton").style.display = "none";
+    document.getElementById("illegalButton").style.display = "none";
+    document.getElementById("confirmButton").style.display = "block";
+    document.getElementById("confirmButton").innerHTML = confirmButtonText;
+}
+//function that hides or shows buttons and text during the gameplay screen
+function stageHideShowButtons(){
+    document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
+    document.getElementById("sellButton").style.display = "block";
+    document.getElementById("playerCash").style.display = "block";
+    document.getElementById("confirmButton").style.display = "none";
+    document.getElementById("stageOneLegalText").style.display = "none";
+    document.getElementById("stageOneIllegalText").style.display = "none";
+}
+
+//Writes text on the sellbutton.
+function sellFrontEnd(){
+    document.getElementById("sellButton").innerHTML = sellButtonText; //Writes text on sellButton
+    
+}
+
+//Keeps count and adds money when you press the button. It also keeps track of when to unlock the next stage transfer
+function sellBackEnd() {
+        money += sellValue;
+        document.getElementById("playerCash").innerHTML = playerCashVar + money;
+        if (money >= levelMax) {
+        document.getElementById("legalButton").style.display = "block";
+        document.getElementById("legalButton").innerHTML = legalButtonText;
+        document.getElementById("illegalButton").style.display = "block";
+        document.getElementById("illegalButton").innerHTML = illegalButtonText;
+    }
+}
 
 // If enter is pressed during the character name entry this triggers nameSet
 // making it work the same way as the "continue" or nameButton.
@@ -25,7 +92,6 @@ function confirmEnter(event){
 
 //function triggered by pressing continue/nameButton
 function nameSet() {
-
     username = charName.value; // Takes the input from "charName" and saves it in the variable called username
     charName.style.display = 'none'; // Hides the input box after nameButton is pressed
     nameButton.style.display = 'none'; // Hides nameButton when it's pressed
@@ -33,9 +99,96 @@ function nameSet() {
     gameStart(); // Starts the game.
 }
 
-//function that makes the sell button work
-function sellButton() {
-        money += 1; //
+
+//function that "starts" the game
+function gameStart() {
+    sellButtonText = "Sell rock for <br> $1"; // Sets text for sellButton during stage: 0
+    document.getElementById("sellButton").style.display = "block"; // makes sellButton appear when game is started.
+    sellValue = 1;
+    levelMax = 10;
+    sellFrontEnd();
+
+}
+
+//Changes the legalVar to true if you choose the legal outcome
+function legal(){
+    legalVar = true;
+    nextStage();
+}
+
+//Changes illegalVar to true if you choose the illegal outcome
+function illegal(){
+    illegalVar = true;
+    nextStage();
+}
+
+//Depending on whether you chose the legal or illegal option, this sends you to the respective transition screen.
+function nextStage(){
+    if(legalVar){
+        stageOneLegalText();
+    }
+    else if(illegalVar){
+        stageOneIllegalText();
+    }
+}
+
+//After reading the text on the transition screen and pressing confirm, you are sent here.
+function confirmNextStage() {
+    if (legalVar){
+        stageOneLegal();
         document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
     }
+    else if (illegalVar){
+        stageOneIllegal();
+        document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
+    }
+
+    legalVar = false;
+    illegalVar = false; // After using either legalVar or illegalVar reset them both to make sure they won't trigger by accident later.
+}
+
+//Prints the text during transition to stageOneLegal
+function stageOneLegalText(){
+
+    document.getElementById("stageOneLegalText").innerHTML = "So you've chosen to take the legal route ...";
+    stageTextHideShowButtons();
+    }
+
+//Prints the text during transition to stageOneIllegal
+function stageOneIllegalText(){
+
+    document.getElementById("stageOneIllegalText").innerHTML = "So you've chosen to take the illegal route ...";
+    stageTextHideShowButtons();
+}
+
+
+//Activates stage one -- Legal outcome
+function stageOneLegal() {
+    stageHideShowButtons();
+    stageOneVars();
+    sellButtonText = "Sell thrifted goods for <br>$10";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $2/h by selling rocks at the beach, using a trust system.'
+}
+
+//Activates stage two -- illegal outcome
+function stageOneIllegal() {
+    stageHideShowButtons();
+    stageOneVars();
+    sellButtonText = "Sell stolen goods for <br>$10";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $2/h selling bags of oregano to high schoolers, using a trust system.'
+}
+
+// The function that runs passive income. 
+function passiveIncome() {
+    setInterval(() => {
+        money += passiveValue;
+        document.getElementById("playerCash").innerHTML = playerCashVar + money;
+    }, 1000);
+}
+
+
 </script>
