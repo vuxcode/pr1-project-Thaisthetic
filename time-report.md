@@ -44,10 +44,10 @@ Fix at least one of the problems that came up during last session. Begin working
 
 I did fix the sell button showing up too early. And I have added the following:
 
-++ Two buttons that lets you progress to stage 1 when you reach $10 wealth on stage 0
-++ A transition screen between stage 0 and stage 1. It keeps a placeholder text and a confirm button to get you to the next level
-++ Upon clicking the confirm button you are sent to the next stage. There the value of a click goes from $1 to $10
-++ Passive income of $2/second on stage 1
+++ Two buttons that lets you progress to stage 1 when you reach $10 wealth on stage 0 </br>
+++ A transition screen between stage 0 and stage 1. It keeps a placeholder text and a confirm button to get you to the next level </br>
+++ Upon clicking the confirm button you are sent to the next stage. There the value of a click goes from $1 to $10 </br>
+++ Passive income of $2/second on stage 1 </br>
 
 - Problems during this session.
 
@@ -56,6 +56,8 @@ The majr one... this is the second time I write this time-report. I forgot to sa
 - Errors that came up during this session to fix during the next.
 
 Apart from the functionality I wanted from the last session that I didn't do anything about, there are no bugs as of now. Meaning that the next session I will just keep pushing through.
+
+Now playing: Lena Nyman & Berndt Egerbladh: Ja Visst Gör Det Ont, 1976 press. </br>
 
 2025-03-31 -- End time 23:25 -- Total time spent: 4h 39 min
 
