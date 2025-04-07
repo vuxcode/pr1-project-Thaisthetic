@@ -69,6 +69,16 @@ Short(er) library session
 
 Make a randomizer to create a way of creating a probability of making it to the next stage or not. Implement it into the program as much as possible, limited time today.
 
+- Current progress
+
+Randomizer created and added so that it's connected to the confirm button. I need to be at home with more time to make it work with the actual stage transition. I believe it might take a couple hours to figure out and implement properly. But, after that I think it's going to become easier to progress. At that point I just have to redo what I've already done 4 times to create each stage and transition.
+
+- Errors that came up during this session to fix during the next.
+
+  Nothing specific. Just realized that this functionality I'm looking for now is more "advanced" than I expected. Need more time and focus.
+
+  2025-04-07 -- End Time 14:52 -- Total time spent: 32 minutes.
+
 
 
 
