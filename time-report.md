@@ -61,5 +61,15 @@ Now playing: Lena Nyman & Berndt Egerbladh: Ja Visst Gör Det Ont, 1976 press. <
 
 2025-03-31 -- End time 23:25 -- Total time spent: 4h 39 min
 
+# 2025-04-07 -- Start time: ~14:20
+
+Short(er) library session
+
+- Plan
+
+Make a randomizer to create a way of creating a probability of making it to the next stage or not. Implement it into the program as much as possible, limited time today.
+
+
+
 
 
