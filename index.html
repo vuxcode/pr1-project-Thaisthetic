@@ -13,6 +13,7 @@
 <button id="illegalButton"; onclick="illegal()" style="display: none;"; ></button>
 <!-- Button to confirm stage choice -->
 <button id="confirmButton"; onclick="confirmNextStage()" style="display: none;"; ></button>
+<button id="rngButton"; onclick="randomizer()" style="display: block;"; ></button>
 
 <!-- Something that let's me print using innerHTML since document.write breaks the program-->
 <div id="playerName"></div>
@@ -36,6 +37,13 @@
     var illegalVar; // Stores whether you chose the legal or illegal option
     var passiveValue; // This is the value of your passive income
     var playerCashVar = 'Total wealth: ' + '$'; // Wealth counter. Made into a variable to implement easier.
+    var rng; //stores value from randomizer
+
+    // randomizer generating a number from 1 through 10
+    function randomizer(){
+    rng = Math.floor(Math.random()*10) + 1;
+    console.log(rng)
+}
 
 // function that sets variables for both stage one outcomes
 function stageOneVars(){
@@ -119,7 +127,7 @@ function legal(){
 //Changes illegalVar to true if you choose the illegal outcome
 function illegal(){
     illegalVar = true;
-    nextStage();
+    nextStage(); 
 }
 
 //Depending on whether you chose the legal or illegal option, this sends you to the respective transition screen.
@@ -134,14 +142,16 @@ function nextStage(){
 
 //After reading the text on the transition screen and pressing confirm, you are sent here.
 function confirmNextStage() {
-    if (legalVar){
+    randomizer()
+    if (legalVar && rng <= 8){ //if rng = 8 or less you are allowed to confirm, or else you get sent back to previous stage
         stageOneLegal();
         document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
     }
-    else if (illegalVar){
+    else if (illegalVar && rng <=70){ //if rng = 8 or less you are allowed to confirm, or else you get sent back to previous stage
         stageOneIllegal();
         document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
     }
+    rng = 0;
 
     legalVar = false;
     illegalVar = false; // After using either legalVar or illegalVar reset them both to make sure they won't trigger by accident later.
@@ -189,6 +199,5 @@ function passiveIncome() {
         document.getElementById("playerCash").innerHTML = playerCashVar + money;
     }, 1000);
 }
-
 
 </script>
