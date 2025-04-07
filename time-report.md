@@ -81,5 +81,4 @@ Randomizer created and added so that it's connected to the confirm button. I nee
 
 
 
-
-
+Overall time spent: 17h 14 min
