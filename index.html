@@ -8,12 +8,14 @@
 <!-- Button that lets you sell rock, style function hides the button. -->
 <button id="sellButton" onclick="sellBackEnd()" style="display: none;"></button>
 <!-- Button that asks if you want to go to the next stage, legal route -->
-<button id="legalButton"; onclick="legal()" style="display: none;"; ></button>
+<button id="legalButton" onclick="legal()" style="display: none;"></button>
 <!-- Button that asks if you want to go to the next stage, illegal route -->
-<button id="illegalButton"; onclick="illegal()" style="display: none;"; ></button>
+<button id="illegalButton" onclick="illegal()" style="display: none;"></button>
 <!-- Button to confirm stage choice -->
-<button id="confirmButton"; onclick="confirmNextStage()" style="display: none;"; ></button>
-<button id="rngButton"; onclick="randomizer()" style="display: block;"; ></button>
+<button id="confirmButton" onclick="confirmNextStage()" style="display: none;"></button>
+<!--Button to return to previous stage-->
+<button id="returnButton" onclick="returnPreviousStage()" style="display: none;"></button>
+
 
 <!-- Something that let's me print using innerHTML since document.write breaks the program-->
 <div id="playerName"></div>
@@ -33,24 +35,73 @@
     var illegalButtonText = "Continue to the next stage: Illegal route"; // Decides the text during the illegal transfer screen. Static right now, but might need to be variable later.
     var levelMax; // Stores the value for how much money you need to progress to the next stage
     var confirmButtonText = "Confirm"; // Button to confirm your stage outcome choice
+    var returnButtonText = "Return"; // Button to return to previous stage
     var legalVar; // Stores whether you chose the legal or illegal option
     var illegalVar; // Stores whether you chose the legal or illegal option
     var passiveValue; // This is the value of your passive income
     var playerCashVar = 'Total wealth: ' + '$'; // Wealth counter. Made into a variable to implement easier.
     var rng; //stores value from randomizer
+    var isStageOneActive;
+    var isStageTwoActive;
+    var isStageThreeActive;
+    var isStageFourActive;
+    var isStageFiveActive;
 
     // randomizer generating a number from 1 through 10
-    function randomizer(){
+function randomizer(){
     rng = Math.floor(Math.random()*10) + 1;
     console.log(rng)
 }
 
+// The function that runs passive income. 
+function passiveIncome() {
+    setInterval(() => {
+        money += passiveValue;
+        document.getElementById("playerCash").innerHTML = playerCashVar + money;
+    }, 1000);
+}
+
+//The function that powers the return button
+function returnPreviousStage() {
+    if (stageOneLegalText || stageOneIllegalText){
+        sendBackToStageZero();
+    }
+}
 // function that sets variables for both stage one outcomes
 function stageOneVars(){
     money -= 10;
     sellValue = 10;
     passiveValue = 2;
     levelMax = 100;
+}
+
+// function that sets variables for both stage two outcomes
+function stageTwoVars(){
+    money -= 100;
+    sellValue = 100;
+    passiveValue = 20;
+    levelMax = 1000;
+}
+
+function stageThreeVars(){
+    money -= 1000;
+    sellValue = 10000;
+    passiveValue = 2000;
+    levelMax = 100000;
+}
+
+function stageFourVars(){
+    money -= 10000;
+    sellValue = 100000;
+    passiveValue = 20000;
+    levelMax = 100000;
+}
+
+function stageFiveVars(){
+    money -= 100000;
+    sellValue = 1000000;
+    passiveValue = 200000;
+    levelMax = 1000000;
 }
 
 //function that hides or shows buttons and text during the transition screen
@@ -60,7 +111,9 @@ function stageTextHideShowButtons(){
     document.getElementById("legalButton").style.display = "none";
     document.getElementById("illegalButton").style.display = "none";
     document.getElementById("confirmButton").style.display = "block";
+    document.getElementById("returnButton").style.display = "block";
     document.getElementById("confirmButton").innerHTML = confirmButtonText;
+    document.getElementById("returnButton").innerHTML = returnButtonText;
 }
 //function that hides or shows buttons and text during the gameplay screen
 function stageHideShowButtons(){
@@ -70,6 +123,7 @@ function stageHideShowButtons(){
     document.getElementById("confirmButton").style.display = "none";
     document.getElementById("stageOneLegalText").style.display = "none";
     document.getElementById("stageOneIllegalText").style.display = "none";
+    document.getElementById("returnButton").style.display = "none";
 }
 
 //Writes text on the sellbutton.
@@ -110,12 +164,12 @@ function nameSet() {
 
 //function that "starts" the game
 function gameStart() {
+confirmNextStage(); // Or call it from the console
     sellButtonText = "Sell rock for <br> $1"; // Sets text for sellButton during stage: 0
     document.getElementById("sellButton").style.display = "block"; // makes sellButton appear when game is started.
     sellValue = 1;
     levelMax = 10;
     sellFrontEnd();
-
 }
 
 //Changes the legalVar to true if you choose the legal outcome
@@ -140,39 +194,92 @@ function nextStage(){
     }
 }
 
-//After reading the text on the transition screen and pressing confirm, you are sent here.
-function confirmNextStage() {
-    randomizer()
-    if (legalVar && rng <= 8){ //if rng = 8 or less you are allowed to confirm, or else you get sent back to previous stage
-        stageOneLegal();
-        document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
-    }
-    else if (illegalVar && rng <=70){ //if rng = 8 or less you are allowed to confirm, or else you get sent back to previous stage
-        stageOneIllegal();
-        document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
-    }
-    rng = 0;
+// if you fail to progress to stage one, you get sent back through here
+function sendBackToStageZero() {
+    
+    // Remove 10 from the current money instead of resetting it
+    money -= 10;
 
-    legalVar = false;
-    illegalVar = false; // After using either legalVar or illegalVar reset them both to make sure they won't trigger by accident later.
+    // If money is less than 0, set it to 0 (to avoid negative money)
+    if (money < 0) {
+    money = 0;
+}
+
+sellValue = 1;  // Reset the sell value
+sellButtonText = "Sell rock for <br> $1";  // Reset button text
+levelMax = 10;  // Reset level max for the next stage
+
+// Update the displayed money
+document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
+
+stageHideShowButtons();
 }
 
 //Prints the text during transition to stageOneLegal
 function stageOneLegalText(){
 
-    document.getElementById("stageOneLegalText").innerHTML = "So you've chosen to take the legal route ...";
+    if(legalVar){
+        document.getElementById("stageOneLegalText").innerHTML = "So you've chosen to take the legal route ...";
     stageTextHideShowButtons();
+        }
     }
 
 //Prints the text during transition to stageOneIllegal
 function stageOneIllegalText(){
-
+    if(illegalVar){
     document.getElementById("stageOneIllegalText").innerHTML = "So you've chosen to take the illegal route ...";
     stageTextHideShowButtons();
+    }
 }
 
 
-//Activates stage one -- Legal outcome
+//After reading the text on the transition screen and pressing confirm, you are sent here.
+function confirmNextStage() {
+    randomizer();
+
+    if (legalVar && rng <= 8 && !isStageOneActive) {  // If rng = 8 or less, you are allowed to confirm, or else you get sent back to previous stage
+        stageOneLegal();
+        document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
+    }
+    else if (illegalVar && rng <= 7 && !isStageOneActive) {  // If rng = 8 or less, you are allowed to confirm, or else you get sent back to previous stage
+        stageOneIllegal();
+        document.getElementById("playerCash").innerHTML = 'Total wealth: ' + money;
+    }
+    else if (legalVar && money >= 100 && rng <= 8 && !isStageTwoActive) {
+        stageTwoLegal();
+        isStageOneActive = false;
+    }
+    else if (illegalVar && money >= 100 && rng <= 7 && !isStageTwoActive) {
+        stageTwoIllegal();
+        isStageOneActive = false;
+    }
+    else if (legalVar && money >= 1000 && rng <= 8 && isStageTwoActive){
+        stageThreeLegal();
+        isStageTwoActive = false;
+    }
+    else if (illegalVar && money >= 1000 && rng <= 7 && isStageTwoActive){
+        stageThreeIllegal();
+        isStageTwoActive = false;
+    }
+    else if (legalVar && rng <= 8 && isStageThreeActive){
+        stageFourLegal();
+        isStageThreeActive = false;
+    }
+    else if (illegalVar && rng <= 7 && isStageThreeActive){
+        stageFourIllegal();
+        isStageThreeActive = false;
+    }
+    else {
+        sendBackToStageZero();
+    }
+
+    rng = 0;
+
+    legalVar = false;
+    illegalVar = false;  // After using either legalVar or illegalVar, reset them both to make sure they won't trigger by accident later.
+}
+
+//Activates stage two - Legal outcome
 function stageOneLegal() {
     stageHideShowButtons();
     stageOneVars();
@@ -180,6 +287,7 @@ function stageOneLegal() {
     sellFrontEnd();
     passiveIncome();
     document.getElementById("currentPassive").innerHTML = 'You are making $2/h by selling rocks at the beach, using a trust system.'
+    isStageOneActive = true;
 }
 
 //Activates stage two -- illegal outcome
@@ -190,14 +298,82 @@ function stageOneIllegal() {
     sellFrontEnd();
     passiveIncome();
     document.getElementById("currentPassive").innerHTML = 'You are making $2/h selling bags of oregano to high schoolers, using a trust system.'
+    isStageOneActive = true;
 }
 
-// The function that runs passive income. 
-function passiveIncome() {
-    setInterval(() => {
-        money += passiveValue;
-        document.getElementById("playerCash").innerHTML = playerCashVar + money;
-    }, 1000);
+function stageTwoLegal(){
+    stageHideShowButtons();
+    stageTwoVars();
+    sellButtonText = "Sell cow dung for <br>$100";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $20/h by selling rocks at the beach, using a trust system.' 
+    isStageTwoActive = true;
 }
 
+function stageTwoIllegal(){
+    stageHideShowButtons();
+    stageTwoVars();
+    sellButtonText = "Sell hydrogen balloons for <br>$100";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $20/h selling empty cans of canned whip cream, using a trust system.'
+    isStageTwoActive = true;
+}
+
+function stageThreeLegal(){
+    stageHideShowButtons();
+    stageThreeVars();
+    sellButtonText = "Sell jewellery for <br>$1000";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $200/h by selling cows at the beach, using a trust system.' 
+    isStageThreeActive = true;
+}
+
+function stageThreeIllegal(){
+    stageHideShowButtons();
+    stageThreeVars();
+    sellButtonText = "Sell buncha junk for <br>$1000";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $200/h by mugging guys wearing suits at the beach.' 
+    isStageThreeActive = true;
+}
+
+function stageFourLegal(){
+    stageHideShowButtons();
+    stageFourVars();
+    sellButtonText = "Sell glittery soap dispensers for <br>$10,000";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $2000/h by selling hammers at the beach, using a trust system.' 
+}
+
+function stageFourIllegal(){
+    stageHideShowButtons();
+    stageFourVars();
+    sellButtonText = "Sell falsely labeled hair wax for <br>$10,000";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $2000/h by pick-pocketing kangaroos.' 
+}
+
+function stageFiveLegal(){
+    stageHideShowButtons();
+    stageFiveVars();
+    sellButtonText = "Sell exclusive antiques for <br>$100,000";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $10,000/h by dancing in front of the white house' 
+}
+
+function stageFiveIllegal(){
+    stageHideShowButtons();
+    stageFiveVars();
+    sellButtonText = "Sell rare stolen artifacts for <br>$100,000";
+    sellFrontEnd();
+    passiveIncome();
+    document.getElementById("currentPassive").innerHTML = 'You are making $10,000/h by selling rare stolen artifacts on the black market.' 
+}
 </script>
