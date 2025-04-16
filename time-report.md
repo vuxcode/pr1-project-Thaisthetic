@@ -97,7 +97,7 @@ The randomizer is fully implemented, but I am having big issues with stage progr
 
 - To do next session
 
-Look into modular programming. I've been looking around, and I think that's what I need for my project. Basically just take what I've learned so far and implement it into reusable modules of code.
+Look into modular programming. I've been looking around, and I think that's what I need for my project. Basically just take what I've learned so far and implement it into reusable modules of code. This could mean I have to rewrite everything from scratch, but rather that than having a program that literally isn't working.
 
 Now playing: The All-Time Greatest Hits of Roy Orbison, double-LP, 1974 press.
 
