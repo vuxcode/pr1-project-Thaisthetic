@@ -79,6 +79,12 @@ Randomizer created and added so that it's connected to the confirm button. I nee
 
   2025-04-07 -- End Time 14:52 -- Total time spent: 32 minutes.
 
+# 2025-04-16 -- Start time: 13:00
 
+Now playing, Laufey: Typical of me, EP, 2024 press. </br>
+
+- Plan
+
+Implement the randomizer and see if I can get stage 2 going. If I can do that I think I should be able to create the rest of the stages fairly easily during my next session.
 
 Overall time spent: 17h 14 min
