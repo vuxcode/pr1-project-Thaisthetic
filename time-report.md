@@ -95,6 +95,10 @@ The randomizer is fully implemented, but I am having big issues with stage progr
 
   E V E R Y T H I N G  I S  A  D A M N  P R O B L E M
 
+- To do next session
+
+Look into modular programming. I've been looking around, and I think that's what I need for my project. Basically just take what I've learned so far and implement it into reusable modules of code.
+
 Now playing: The All-Time Greatest Hits of Roy Orbison, double-LP, 1974 press.
 
 2025 - 04 - 16 -- End time: 16:38 -- Total time spent: 3h 38 minutes.
