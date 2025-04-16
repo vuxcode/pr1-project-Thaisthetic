@@ -81,10 +81,22 @@ Randomizer created and added so that it's connected to the confirm button. I nee
 
 # 2025-04-16 -- Start time: 13:00
 
-Now playing, Laufey: Typical of me, EP, 2024 press. </br>
+Now playing: Laufey: Typical of me, EP, 2024 press. </br>
 
 - Plan
 
 Implement the randomizer and see if I can get stage 2 going. If I can do that I think I should be able to create the rest of the stages fairly easily during my next session.
 
-Overall time spent: 17h 14 min
+- Current progress
+
+The randomizer is fully implemented, but I am having big issues with stage progression. The numbers are also a mess. After Easter I'm probably going to have to sit down and possibly do a complete overhaul and basically start from scratch using a method that lets me work tighter. The code right now is everywhere, and I can feel that some things are supposed to be less complicated than they currently are. My logic is broken and I keep using different logic for the same stuff, or just copy pasting stuff. Going to look around online about what methods could be used to structure everything some more. Trying to make sense of everything right now, even with comments is like trying to untagle a lump of tiny jewelry. It's mind-boggling and the risk of breaking something by just changing something small is huge.
+
+- Errors
+
+  E V E R Y T H I N G  I S  A  D A M N  P R O B L E M
+
+Now playing: The All-Time Greatest Hits of Roy Orbison, double-LP, 1974 press.
+
+2025 - 04 - 16 -- End time: 16:38 -- Total time spent: 3h 38 minutes.
+
+Overall time spent: 20h 52 min
