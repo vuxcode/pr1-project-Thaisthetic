@@ -103,4 +103,6 @@ Now playing: The All-Time Greatest Hits of Roy Orbison, double-LP, 1974 press.
 
 2025 - 04 - 16 -- End time: 16:38 -- Total time spent: 3h 38 minutes.
 
+# 2025 - 04 - 22 -- Start Time: 13:20
+
 Overall time spent: 20h 52 min
