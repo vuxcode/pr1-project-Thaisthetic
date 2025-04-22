@@ -105,4 +105,25 @@ Now playing: The All-Time Greatest Hits of Roy Orbison, double-LP, 1974 press.
 
 # 2025 - 04 - 22 -- Start Time: 13:20
 
-Overall time spent: 20h 52 min
+- Plan
+
+Start rewriting the code. Start from scratch and make it modular and less of a headache. I just plan to work until I can't be bothered anymore.
+
+- Current progress
+
+The base game is working. And it's working so much better than before. The gameplay loop of clicking to earn money, to then proceed to the next stage via a transition screen is now working smoothly. It's also just one logic instead of a bunch of functions with 999 conditions. Since each was always supposed to be basically the same thing 5 times, this is great because now I just change the text using an array instead of making one function for each stage with new text.
+
+- Errors or other stuff to get done next time
+
+The order of when the text shows up is a bit off right now. I have to move them around a little bit, but I think it should be a simple fix. Other than that I want to:
+
+- Add the passive income again
+- Add the randomizers
+- Add the ending screen
+- Tweak the numbers so that the game is somewhat balanced
+
+Then I should be done. I'd say 2-3 more longer sessions like this one and I should be done.
+
+2025 - 04 - 22 -- End Time: 16:47 -- Total time spent: 3h 27 min
+
+Overall time spent: 24h 19 min
