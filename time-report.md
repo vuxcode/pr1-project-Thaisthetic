@@ -132,4 +132,10 @@ Then I should be done. I'd say 2-3 more longer sessions like this one and I shou
 
 Implement everything I wasn't able to implement last time and hopefully finish today.
 
-Overall time spent: 24h 19 min
+- Issues
+
+Now the game works mostly as intended, and the code has gone from a complete mess, to a mess that that is somewhat manageable. I am so over this program and I am not enjoying a single second any longer. Therefore I am going to scratch the randomizer. I don't want to deal with anything else -- I am as done as I will ever be with this program now. 
+
+2025 - 05 - 07 -- End Time 14:19 -- Total time spent: 2h 39 minutes
+
+Overall time spent: 26h 58 minutes
