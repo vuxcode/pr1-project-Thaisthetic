@@ -11,7 +11,7 @@ This unnamed piece of junk program is a short story-driven incremental game that
 The program is quite simple and easy to wrap your head around. Here are some steps:
 
 - Enter your name and click submit, or press enter. -- Choose wisely, because you can't change it afterwards, unless you reload the page.
-- Once greeted with the worst UI you'll ever lay your eyes upon, feel free to read to the story text, or start selling your rocks by pressing the sell button.
+- Once greeted with the worst UI you'll ever lay your eyes upon, feel free to read the story text, or start selling your rocks by pressing the sell button.
 - To progress you have to press that button several times.
 - When you've pressed it enough times, you'll get an option to progress to the next stage.
 - Choose yes, and you get to choose between the legal or illegal route -- whatever you choose makes no difference, it's only story dependant, and even then it's minor.
