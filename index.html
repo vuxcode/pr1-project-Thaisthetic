@@ -6,91 +6,101 @@
     <input id="charName" type="text" placeholder="Enter your name">
     <button id="charNameButton" onclick="setName()">Submit</button>
 
-<!-- Game UI, text controlled by variables and HTML elements  -->
-<div id="gameUI" style="display: none; margin-top: 20px;">
-    <p id="playerGreeting"></p> <!-- Greets the player -->
-    <p id="moneyDisplay"></p> <!-- Shows how much money you have -->
-    <button id="sellButton" onclick="sell()">Sell</button> <!-- Button that sells your item -->
-    <p id="storyText"></p> <!-- adds some story related text on the bottom-->
+    <!-- Game UI, text controlled by variables and HTML elements  -->
+        <div id="gameUI" style="display: none; margin-top: 20px;">
+        <p id="playerGreeting"></p> <!-- Greets the player -->
+        <p id="moneyDisplay"></p> <!-- Shows how much money you have -->
+        <button id="sellButton" onclick="sell()">Sell</button> <!-- Button that sells your item -->
+        <p id="passiveIncomeDisplay" style="display: none;"></p>
+        <p id="storyText"></p> <!-- adds some story related text on the bottom-->
 
-    <!-- Adds button to progress to next stage when "no" has been pressed -->
-    <button id="proceedButton" onclick="showTransitionPopUp()" style="display: none;">Proceed to Next Stage</button>
-</div>
+        <!-- Adds button to progress to next stage when "no" has been pressed -->
+        <button id="proceedButton" onclick="showTransitionPopUp()" style="display: none;">Proceed to Next Stage</button>
+    </div>
 
-<!-- Progression Pop-up -->
- <div id="transitionPopUp" style="display: none;">
-    <p id="transitionQuestion"></p> <!-- Prints "Progress to next stage?" -->
-    <button id="yesButton" onclick="handleYes()">Yes</button>
-    <button id="noButton" onclick="handleNo()">No</button>
- </div>
+    <!-- Progression Pop-up -->
+    <div id="transitionPopUp" style="display: none;">
+        <p id="transitionQuestion"></p> <!-- Prints "Progress to next stage?" -->
+        <button id="yesButton" onclick="handleYes()">Yes</button>
+        <button id="noButton" onclick="handleNo()">No</button>
+    </div>
 
- <!-- Transition / Story progression screen -->
-  <div id="storyScreen" style="display:none;">
-    <p id="storyText"></p> <!-- Story related text -->
-    <button id="legalButton" onclick="chooseLegalRoute()">Legal Route</button>
-    <button id="illegalButton" onclick="chooseIllegalRoute()">Illegal Route</button>
-  </div>
+    <!-- Transition / Story progression screen -->
+    <div id="storyScreen" style="display:none;">
+        <p id="storyText"></p> <!-- Story related text -->
+        <button id="legalButton" onclick="chooseLegalRoute()">Legal Route</button>
+        <button id="illegalButton" onclick="chooseIllegalRoute()">Illegal Route</button>
+    </div>
 
     <script>
-
-        // Array to keep things more modular
+        // Array to keep progression more modular
         const stages = [
-    {
-        moneyRequired: 10,
-        item: "rock",
-        sellPrice: 1,
-        storyText: "You're looking a bit rough around the edges there bud. </b> Sell some of these rocks and see if you can get yourself some threads.",
-        legalRoute: "You build yourself a stand selling shiny sanded rocks at the docks.",
-        illegalRoute: "You build yourself a stand selling glass pebbles labeled as gemstones. You quack!",
-    },
-    {
-        moneyRequired: 100,
-        item: "shiny rock",
-        sellPrice: 5,
-        storyText: "Check that out! Those rocks are shinier than ever! I bet you could get a pretty penny out of those.",
-        legalRoute: "You start fishing for oysters to get some pearls to sell.",
-        illegalRoute: "You start robbing innocent little grannies wearing pearl necklaces. Have you no shame?"
-    },
-    {
-        moneyRequired: 1000,
-        item: "pearl",
-        sellPrice: 20,
-        storyText: "Wow, such beautiful pearls. Where did you find those",
-        legalRoute: "Your business is booming and you can now afford some decent gear. You start selling handmade jewellery.",
-        illegalRoute: "You sell them on the black market. Dangerous, but profitable.",
-    },
-    {
-        moneyRequired: 10000,
-        item: "rare crystal",
-        sellPrice: 50,
-        storyText: "You're dealing in rare crystals now. Big leagues!",
-        legalRoute: "You sell to scientists and collectors.",
-        illegalRoute: "You start smuggling them to get away tax free.",
-    },
-    {
-        moneyRequired: 50000,
-        item: "actual gemstone",
-        sellPrice: 100,
-        storyText: "Whew, did you steal those from some child in South Africa?",
-    },
-];
+            {
+                moneyRequired: 10,
+                item: "rock",
+                sellPrice: 1,
+                storyText: "You're looking a bit rough around the edges there bud. </b> Sell some of these rocks and see if you can get yourself some threads.",
+                legalRoute: "You build yourself a stand selling shiny sanded rocks at the docks.",
+                illegalRoute: "You build yourself a stand selling glass pebbles labeled as gemstones. You quack!",
+            },
+            {
+                moneyRequired: 100,
+                item: "shiny rock",
+                sellPrice: 5,
+                storyText: "Check that out! Those rocks are shinier than ever! I bet you could get a pretty penny out of those.",
+                legalRoute: "You start fishing for oysters to get some pearls to sell.",
+                illegalRoute: "You start robbing innocent little grannies wearing pearl necklaces. Have you no shame?",
+                passiveValue: 5,
+            },
+            {
+                moneyRequired: 1000,
+                item: "pearl",
+                sellPrice: 20,
+                storyText: "Wow, such beautiful pearls. Where did you find those",
+                legalRoute: "Your business is booming and you can now afford some decent gear. You start selling handmade jewellery.",
+                illegalRoute: "You sell the pearls on the black market. Dangerous, but profitable.",
+                passiveValue: 10,
+            },
+            {
+                moneyRequired: 4000,
+                item: "rare crystal",
+                sellPrice: 50,
+                storyText: "You're dealing in rare crystals now. Big leagues!",
+                legalRoute: "You sell crystals to scientists and collectors.",
+                illegalRoute: "You start smuggling the crystals to get away tax free.",
+                passiveValue: 50,
+            },
+            {
+                moneyRequired: 10000,
+                item: "actual gemstone",
+                sellPrice: 100,
+                storyText: "Whew, did you steal those from some child in South Africa?",
+                legalRoute: "You sell the gemstones to collectors all over the world.",
+                illegalRoute: "You befriend Russian oligarchs and trade gemstones for political power in Yakutsk.",
+                passiveValue: 100,
+            },
+        ];
 
-        //variables
+        // Variables
         var money = 0; // stores currency
         var item = "rock"; // stores item to sell
         var sellPrice = 1; // price per click
         var stage = 1; // stage counter
         var moneyRequired = 10; // money required to level up
+        var passiveValue; // passive income value
+        var passiveIncomeInterval;
+        var chooseCheck = false;
 
-        //Functions that sets player name
+        // Functions that sets player name
         function setName() {
             var name = document.getElementById("charName").value; // collects input from the input box
 
-            //Elements to make the text in the UI variable
+            // Elements to make the text in the UI variable
             document.getElementById("playerGreeting").innerHTML = "Greetings, " + name + "!";
             document.getElementById("moneyDisplay").innerHTML = "You have: $" + money;
             document.getElementById("sellButton").innerHTML = "Sell " + item + " for $" + sellPrice;
             document.getElementById("storyText").innerHTML = "You need some money, aye? Try selling some rocks why don't you?";
+            document.getElementById("passiveIncomeDisplay").innerHTML = "You've invested in the stock market, earning you: $" + passiveValue + " a day.";
 
             document.getElementById("gameUI").style.display = "block"; // Show game UI
             document.getElementById("charName").style.display = "none"; // Hide name input
@@ -99,27 +109,28 @@
 
         // Function triggered by sellButton.
         function sell() {
-            money += sellPrice; // each stages has a different sellPrice, money increases each click based on that number
+            money += sellPrice; // each stage has a different sellPrice, money increases each click based on that number
             document.getElementById("moneyDisplay").innerHTML = "You have: $" + money; //Every time money is increased, reload this element to showcase it visually
 
-            if (money >= moneyRequired && document.getElementById("proceedButton").style.display === "none"){
+            if (money >= moneyRequired && document.getElementById("proceedButton").style.display === "none") {
                 showTransitionPopUp(); // If you have enough money to progress, show progress pop-up
             }
         }
 
         // Function to show the transition pop-up
         function showTransitionPopUp() {
+
+            if(!chooseCheck){
             document.getElementById("transitionQuestion").innerHTML = "Do you want to progress to Stage " + (stage + 1) + "?";
             document.getElementById("transitionPopUp").style.display = "block";  // Show the pop-up
+            }
         }
 
-            // Function to handle when the player clicks "Yes"
+        // Function to handle when the player clicks "Yes"
         function handleYes() {
+            chooseCheck = true;
             document.getElementById("transitionPopUp").style.display = "none"; // Hide the transition pop-up
             document.getElementById("storyScreen").style.display = "block"; // Show story options
-
-            // Add story text related to moving to the next stage
-            document.getElementById("storyText").innerHTML = "Do you want to be a good citizen or a stupid twerp";
 
             // Hides proceedButton
             document.getElementById("proceedButton").style.display = "none";
@@ -127,32 +138,42 @@
             document.getElementById("storyText").innerHTML = stages[stage - 1].storyText;
         }
 
-            // Handle the legal route
+        // Handle the legal route
         function chooseLegalRoute() {
             document.getElementById("storyText").innerHTML = stages[stage - 1].legalRoute;
             proceedToNextStage(); // Proceed to the next stage
         }
 
-            // Handle the illegal route
+        // Handle the illegal route
         function chooseIllegalRoute() {
+            document.getElementById("storyText").innerHTML = stages[stage - 1].illegalRoute;
             proceedToNextStage(); // Proceed to the next stage
-        }   document.getElementById("storyText").innerHTML = stages[stage - 1].illegalRoute;
-            // Function to handle when the player clicks "No"
+        }
+
+        // Function to handle when the player clicks "No"
         function handleNo() {
             document.getElementById("transitionPopUp").style.display = "none"; // Hide the transition pop-up
             document.getElementById("proceedButton").style.display = "block"; // Show the "Proceed to Next Stage" button
         }
 
-            // Function to proceed to the next stage
-        function proceedToNextStage(){
+        // Function to proceed to the next stage
+        function proceedToNextStage() {
             stage += 1;
-            
-            const currentStageData = stages[stage - 1] //Subtract 1 because arrays start at 0
-           
+
+            chooseCheck = false;
+
+            if (stage === 2) {
+                passiveIncome(); // Start passive income accumulation
+            }
+
+
+            const currentStageData = stages[stage - 1]; //Subtract 1 because arrays start at 0
+
             // Updates values based on current stage
             item = currentStageData.item;
             sellPrice = currentStageData.sellPrice;
             moneyRequired = currentStageData.moneyRequired;
+            passiveValue = currentStageData.passiveValue;
 
             // Hides story screen and proceed button
             document.getElementById("storyScreen").style.display = "none";
@@ -166,12 +187,29 @@
         }
 
         // Makes the program listen for the enter key
-        document.getElementById("charName").addEventListener("keypress", function(event) {
-
+        document.getElementById("charName").addEventListener("keypress", function (event) {
             if (event.key === "Enter") { // When enter is pressed trigger setName()
                 setName();
             }
         });
+
+        function checkWinCondition() {
+            if (money >= 10000) {
+                clearInterval(passiveIncomeInterval);
+                alert("Congratulations! You've won the game!");
+                location.reload(); // restart the game
+    }
+  }
+
+        function passiveIncome() {
+            passiveIncomeInterval = setInterval(() => {
+            money += passiveValue;
+            document.getElementById("moneyDisplay").innerHTML = "You have: $" + money;
+            document.getElementById("passiveIncomeDisplay").style.display = "block";
+            document.getElementById("passiveIncomeDisplay").innerHTML = "You've invested in the stock market, earning you: $" + passiveValue + " a day.";
+            checkWinCondition();
+    }, 1000);
+}
     </script>
 </body>
 </html>
