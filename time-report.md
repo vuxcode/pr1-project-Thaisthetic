@@ -126,4 +126,10 @@ Then I should be done. I'd say 2-3 more longer sessions like this one and I shou
 
 2025 - 04 - 22 -- End Time: 16:47 -- Total time spent: 3h 27 min
 
+# 2025 - 05 - 07 -- Start Time: 11:40
+
+- Plan
+
+Implement everything I wasn't able to implement last time and hopefully finish today.
+
 Overall time spent: 24h 19 min
