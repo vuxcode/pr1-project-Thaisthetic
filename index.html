@@ -93,13 +93,14 @@
         function setName() {
             var name = document.getElementById("charName").value; // collects input from the input box
 
-            // Elements to make the text in the UI variable
+            // Sets some variables for the initial stage
             document.getElementById("playerGreeting").innerHTML = "Greetings, " + name + "!";
             document.getElementById("moneyDisplay").innerHTML = "You have: $" + money;
             document.getElementById("sellButton").innerHTML = "Sell " + item + " for $" + sellPrice;
             document.getElementById("storyText").innerHTML = "You need some money, aye? Try selling some rocks why don't you?";
             document.getElementById("passiveIncomeDisplay").innerHTML = "You've invested in the stock market, earning you: $" + passiveValue + " a day.";
 
+            // Shows the game UI and hides the initial input screen
             document.getElementById("gameUI").style.display = "block"; // Show game UI
             document.getElementById("charName").style.display = "none"; // Hide name input
             document.getElementById("charNameButton").style.display = "none"; // Hide submit button
