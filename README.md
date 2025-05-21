@@ -4,7 +4,7 @@ Included in time-report.md.
 
 # Project Summary
 
-This unnamed piece of junk program is a short story-driven incremental game that you probably shouldn't play. The story, which is about person trying to make a lot of money -- is about as bad as the code, and there's no joy to have with either part. I am not usually this pessimistic, but this thing has been constantly putting me at my wits' end since I started it. So, I have about 2% love and 98% hate for it. 
+This unnamed program is a short, story-driven incremental game about a person trying to make a lot of money. It's not exactly a masterpiece -- neither the story nor the code is anything to brag about -- but it works (mostly). I’ve spent a lot of time battling with it, and while I wouldn’t say it’s brought me much joy, it has definitely taught me a lot. If I had to rate my feelings for it, it’s probably 2% love and 98% frustration.
 
 I started out fairly optimistic, and thought it would be quite an easy project. While it's not even especially technically advanced in its current state, it took me a lot of effort to get there. At first I began working mainly with functions. At the start, my idea was to make the whole program mainly using functions. At first it worked really well, I used ChatGPT sort of as an assistant for some part, but at this stage I was actually working mostly through my own mind. The main things I ended up asking AI for help with was the following:
 
